@@ -65,18 +65,48 @@
     .explosion-heart{position:fixed;width:22px;height:22px;border-radius:6px;background:linear-gradient(180deg,var(--heart2),var(--heart3));box-shadow:0 10px 26px rgba(255,140,180,0.12);pointer-events:none}
     /* responsive */
     @media (max-width:980px){
+    /* 1. Card Layout: Switch to a single column (already correct) */
     .card{
         grid-template-columns:1fr;
         gap:20px;
         padding:18px;
     }
-    .card{
-    /* ... desktop styles ... */
-    display:grid;
-    grid-template-columns:1fr 460px;
-    /* ... */
+    
+    /* 2. Stage/Plushy Area: Use a flexible height */
+    .stage{
+        /* The crucial change for fitting on a small screen */
+        height: auto; 
+        min-height: 300px;
+        max-height: 40vh; /* <-- Set a stricter maximum height limit */
+        padding: 10px; /* Reduce padding */
+    }
+    
+    /* 3. Plushy Size: Scale the entire plushy down */
+    /* This makes the plushy smaller than the stage on very small screens */
+    .plush-wrap{
+        width: 300px; /* Reduced from 340px */
+        height: 300px; /* Reduced from 340px */
+    }
+    .plush{
+        width: 260px; /* Reduced from 320px */
+        height: 260px; /* Reduced from 320px */
+    }
+    
+    /* 4. Shadow/Details: Adjust shadow size */
+    .shadow{
+        width: 300px; /* Matches plush-wrap width */
+    }
+    .ear {
+        width: 90px;
+        height: 90px;
+    }
+    .face {
+        transform: translate(-50%,-50%) translateZ(40px); /* Adjust Z-depth for smaller scale */
+    }
+    .bow {
+        transform: translate(-50%,-50%) translateZ(42px); /* Adjust Z-depth for smaller scale */
+    }
 }
-
 @media (max-width:980px){
     .card{
         grid-template-columns:1fr; /* This is correct for stacking! */
