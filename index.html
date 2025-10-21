@@ -64,7 +64,44 @@
     /* explosion hearts (easter egg) */
     .explosion-heart{position:fixed;width:22px;height:22px;border-radius:6px;background:linear-gradient(180deg,var(--heart2),var(--heart3));box-shadow:0 10px 26px rgba(255,140,180,0.12);pointer-events:none}
     /* responsive */
-    @media (max-width:980px){.card{grid-template-columns:1fr;gap:20px;padding:18px}.stage{height:420px}.plush-wrap{width:340px;height:340px}.shadow{width:360px}}
+    @media (max-width:980px){
+    .card{
+        grid-template-columns:1fr;
+        gap:20px;
+        padding:18px;
+    }
+    .card{
+    /* ... desktop styles ... */
+    display:grid;
+    grid-template-columns:1fr 460px;
+    /* ... */
+}
+
+@media (max-width:980px){
+    .card{
+        grid-template-columns:1fr; /* This is correct for stacking! */
+        /* ... */
+    }
+}
+    .stage{
+        height: auto; /* Let content define height */
+        min-height: 380px; /* Ensure a minimum size */
+        max-height: 50vh; /* ⬅️ **CRITICAL CHANGE** - Limit stage height to 50% of viewport height */
+        padding-top: 20px; /* Add some vertical space */
+        padding-bottom: 20px;
+    }
+    .plush-wrap{
+        width:340px;
+        height:340px;
+    }
+    .shadow{
+        width:360px;
+    }
+    /* Optional: Ensure card content wraps nicely */
+    .left h1{
+        font-size: 32px;
+    }
+}
     @media (prefers-reduced-motion:reduce){.plush-wrap,.sparkle,.hearts-bg,.explosion-heart{animation:none!important;transition:none!important}}
   </style>
 </head>
