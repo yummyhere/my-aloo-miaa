@@ -108,28 +108,56 @@
     }
 }
 @media (max-width:980px){
+    /* 1. CARD LAYOUT: Ensure single column and padding */
     .card{
-        grid-template-columns:1fr; /* This is correct for stacking! */
-        /* ... */
+        grid-template-columns:1fr;
+        gap:10px; /* Reduced gap */
+        padding:12px; /* Reduced padding */
     }
-}
-    .stage{
-        height: auto; /* Let content define height */
-        min-height: 380px; /* Ensure a minimum size */
-        max-height: 50vh; /* ⬅️ **CRITICAL CHANGE** - Limit stage height to 50% of viewport height */
-        padding-top: 20px; /* Add some vertical space */
-        padding-bottom: 20px;
-    }
-    .plush-wrap{
-        width:340px;
-        height:340px;
-    }
-    .shadow{
-        width:360px;
-    }
-    /* Optional: Ensure card content wraps nicely */
     .left h1{
-        font-size: 32px;
+        font-size: clamp(24px, 6vw, 36px); /* Make title scale better */
+    }
+
+    /* 2. STAGE/PLUSHY AREA: Set a tight max height */
+    .stage{
+        height: auto; 
+        min-height: 280px;
+        max-height: 35vh; /* <-- KEY CHANGE: Limit to 35% of viewport height */
+        padding: 5px; /* Minimal padding */
+    }
+    
+    /* 3. PLUSHY SCALE: Significantly reduce all plushy elements */
+    .plush-wrap{
+        width: 280px; /* Much smaller than 340px */
+        height: 280px;
+    }
+    .plush{
+        width: 220px; /* Reduced from 320px */
+        height: 220px; 
+    }
+    
+    /* 4. DETAILS: Scale all sub-elements to match the new plushy size */
+    .ear{
+        width: 80px;
+        height: 80px;
+        top: -30px;
+    }
+    .face{
+        width: 130px;
+        top: 50%;
+        transform: translate(-50%,-50%) translateZ(40px);
+    }
+    .eyes{ gap: 18px; }
+    .eye{ width: 26px; height: 26px; }
+    .blush{ width: 50px; height: 18px; }
+    .bow{ top: 66%; gap: 6px; transform: translate(-50%,-50%) translateZ(42px); }
+    .bow .wing{ width: 36px; height: 24px; }
+    .feet{ bottom: -18px; gap: 18px; }
+    .foot{ width: 60px; height: 36px; }
+
+    /* 5. SHADOW: Adjust shadow size */
+    .shadow{
+        width: 280px; /* Matches plush-wrap width */
     }
 }
     @media (prefers-reduced-motion:reduce){.plush-wrap,.sparkle,.hearts-bg,.explosion-heart{animation:none!important;transition:none!important}}
